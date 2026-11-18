@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: PolicyIK-OMX
+message: Cite the original PolicyIK paper when using this implementation in research.
+type: software
+authors:
+  - name: PolicyIK-OMX contributors
+repository-code: https://github.com/taewan2002/PolicyIK-OMX
+license: Apache-2.0
+references:
+  - type: article
+    title: "PolicyIK: High-Precision Inverse Kinematics for Robot Arms with Reinforcement Learning"
+    authors:
+      - {family-names: Liu, given-names: Yuhan}
+      - {family-names: Liu, given-names: Xinqi}
+      - {family-names: Dong, given-names: Zixuan}
+      - {family-names: Ross, given-names: Keith W.}
+      - {family-names: Wan, given-names: Shenji}
+    year: 2026
+    url: https://arxiv.org/abs/2611.05372

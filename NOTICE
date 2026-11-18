@@ -1,0 +1,12 @@
+PolicyIK-OMX
+Copyright 2026 PolicyIK-OMX contributors
+
+This is an independent OM-X implementation inspired by PolicyIK:
+Yuhan Liu, Xinqi Liu, Zixuan Dong, Keith W. Ross, and Shenji Wan.
+PolicyIK: High-Precision Inverse Kinematics for Robot Arms with Reinforcement Learning.
+arXiv:2611.05372 (2026).
+https://github.com/Tinaliu0123/PolicyIK
+
+The upstream project and this project use the Apache License, Version 2.0.
+The OM-X checkpoints were trained for this project. Third-party robot models,
+datasets, and hardware SDKs retain their own licenses.

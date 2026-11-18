@@ -1,0 +1,148 @@
+{
+  "schema": "policyik-omx-v1",
+  "weights": {
+    "checkpoints/sim/actor.pt": "76ba73eaec5d6b9e717852a43facfec57ce7221c3a3813a6037dd6fb9cb2718b",
+    "checkpoints/sim/hold_prior.pt": "cb14dcc11d9743c525239357116849bfa98d636c38b38ffbd6bfeedf6723c760",
+    "checkpoints/sim/workspace.pt": "59225ee59f73bf756bfc67705f356f08c4198648d43663d8bcb30fccb4d74851"
+  },
+  "sim_benchmark": {
+    "goal_seed": 628120,
+    "criteria_mm_deg": [
+      1,
+      0.2
+    ],
+    "results": {
+      "analytic_offset-step": {
+        "n": 96,
+        "strict": 69,
+        "stops": 2,
+        "contacts": 0,
+        "median_final_mm": 0.16244581213301265,
+        "median_final_deg": 0.03851443954192322,
+        "tracking_mean_mm": 9.821680275031099
+      },
+      "analytic_offset-tracking": {
+        "n": 96,
+        "strict": 60,
+        "stops": 1,
+        "contacts": 0,
+        "median_final_mm": 0.2821210606090653,
+        "median_final_deg": 0.06850495732468061,
+        "tracking_mean_mm": 3.0308300084211592
+      },
+      "workspace_offset-step": {
+        "n": 96,
+        "strict": 52,
+        "stops": 10,
+        "contacts": 0,
+        "median_final_mm": 0.2339689176040805,
+        "median_final_deg": 0.04175824169629345,
+        "tracking_mean_mm": 8.675076512445738
+      },
+      "workspace_offset-tracking": {
+        "n": 96,
+        "strict": 42,
+        "stops": 9,
+        "contacts": 0,
+        "median_final_mm": 0.3473320158761304,
+        "median_final_deg": 0.08883958392129827,
+        "tracking_mean_mm": 3.2941278965545813
+      },
+      "guard_smooth-step": {
+        "n": 96,
+        "strict": 75,
+        "stops": 7,
+        "contacts": 0,
+        "median_final_mm": 0.10803928133592569,
+        "median_final_deg": 0.01559652829632299,
+        "tracking_mean_mm": 9.125156250729365
+      },
+      "guard_smooth-tracking": {
+        "n": 96,
+        "strict": 65,
+        "stops": 5,
+        "contacts": 0,
+        "median_final_mm": 0.15442477416697814,
+        "median_final_deg": 0.03116259521364819,
+        "tracking_mean_mm": 3.195730568891461
+      }
+    }
+  },
+  "vla_simulator": {
+    "previous": {
+      "episodes": 12,
+      "lift": 8,
+      "place": 0,
+      "stops": 5,
+      "stop_reasons": {
+        "Desk clearance guard": 2,
+        "Hardware position bound": 3
+      }
+    },
+    "refined": {
+      "episodes": 12,
+      "lift": 7,
+      "place": 0,
+      "stops": 7,
+      "stop_reasons": {
+        "Hardware position bound": 5,
+        "Desk clearance guard": 2
+      }
+    },
+    "same_initial_and_first_goal": 12
+  },
+  "gripper_braking_simulator": {
+    "refined": {
+      "before": {
+        "episodes": 12,
+        "lifts": 7,
+        "placements": 0,
+        "guard_stops": 7,
+        "stop_reasons": {
+          "Hardware position bound": 5,
+          "Desk clearance guard": 2
+        },
+        "released_episodes": 7,
+        "median_release_cube_to_tray_mm": 156.85418556543416
+      },
+      "braking": {
+        "episodes": 12,
+        "lifts": 8,
+        "placements": 0,
+        "guard_stops": 3,
+        "stop_reasons": {
+          "Desk clearance guard": 3
+        },
+        "released_episodes": 8,
+        "median_release_cube_to_tray_mm": 167.54285964392352
+      }
+    },
+    "workspace": {
+      "before": {
+        "episodes": 12,
+        "lifts": 8,
+        "placements": 0,
+        "guard_stops": 5,
+        "stop_reasons": {
+          "Desk clearance guard": 2,
+          "Hardware position bound": 3
+        },
+        "released_episodes": 8,
+        "median_release_cube_to_tray_mm": 148.6072763794229
+      },
+      "braking": {
+        "episodes": 12,
+        "lifts": 8,
+        "placements": 0,
+        "guard_stops": 4,
+        "stop_reasons": {
+          "Desk clearance guard": 3,
+          "Hardware position bound": 1
+        },
+        "released_episodes": 7,
+        "median_release_cube_to_tray_mm": 148.90367186713434
+      }
+    }
+  },
+  "sim_panel_sha256": "830b6d3b40af8d82b54038751da8ec0e9ad16e93c3482de6caf7fa753b72c9ad"
+}
