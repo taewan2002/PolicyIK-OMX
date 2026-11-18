@@ -4,7 +4,7 @@ A research implementation of learned pose tracking for the five-axis ROBOTIS OM-
 
 ## Checkpoints
 
-- **Sim-IK** combines a PPO actor, a learned FK-based workspace correction, and a holding correction trained on simulated actuator deflection. The three CPU-loadable weights are in [checkpoints/sim](checkpoints/sim). They can be reused with the same OM-X kinematics and action interface. Validate the mounting, workspace, actuator model, and limits for each deployment.
+- **Sim-IK** combines an actor trained with imitation learning and closed-loop data aggregation, a learned FK-based workspace correction, and a holding correction trained on simulated actuator deflection. The three CPU-loadable weights are in [checkpoints/sim](checkpoints/sim). They can be reused with the same OM-X kinematics and action interface. Validate the mounting, workspace, actuator model, and limits for each deployment.
 
 OM-X actions use `[x, y, z, pitch, heading, gripper]` in meters and radians. Goals are absolute in the calibrated arm frame. Encoder-derived poses use the analytic **forward** kinematics. The learned controller produces joint references. Pass them through the robot's limits, clearance, speed, and acceleration checks before sending them.
 
@@ -28,12 +28,14 @@ The rolling reference limiter is available as `policyik_omx.reference.ReferenceE
 
 ## Adapt the simulator checkpoints
 
-Start from the supplied actor for the same five-axis geometry. The release actor was trained with PPO using reachable FK-generated goals, a running joint reference, coarse and fine pose-error features, and rewards for reaching and holding. Refit the workspace and holding modules when the simulated arm or motor dynamics change.
+Start from the supplied actor for the same five-axis geometry. The released actor was trained for 7,000 optimizer updates using supervised imitation followed by closed-loop data aggregation in MuJoCo. Its inputs include a running joint reference and coarse and fine pose-error features. The analytical teacher supplies targets during training. Runtime inference uses the learned actor and forward kinematics. Refit the workspace and holding modules when the simulated arm or motor dynamics change.
 
 ```bash
 python -m policyik_omx.train_sim workspace data/joint-pairs.npz runs/workspace.pt --init checkpoints/sim/workspace.pt
 python -m policyik_omx.train_sim hold data/hold-samples.npz runs/hold_prior.pt
 ```
+
+The released workspace correction was fitted on 240,000 nearby pairs. Of those, 162,517 started from a uniform draw in joint coordinates within the tested limits and passed a clearance filter. The other 77,483 started near demonstration configurations. The largest per-axis change in 95% of pairs was at most 4.10°. The released holding prior uses 4,075 MuJoCo holding samples.
 
 The workspace file contains six-channel arrays `start` and `end` of nearby joint positions within the simulator's valid space. Training labels are the known joint change and the difference between their two FK poses. The holding file contains six-channel `command` and five-channel `deflection` arrays. Hold each reference until settled, then record command minus measured joint position. Split both datasets by pose region or recording session before selecting weights. Reproducing the original actor requires the original simulator setup and training trajectories.
 

@@ -144,5 +144,21 @@
       }
     }
   },
-  "sim_panel_sha256": "830b6d3b40af8d82b54038751da8ec0e9ad16e93c3482de6caf7fa753b72c9ad"
+  "sim_panel_sha256": "830b6d3b40af8d82b54038751da8ec0e9ad16e93c3482de6caf7fa753b72c9ad",
+  "sim_training": {
+    "actor": {
+      "method": "supervised imitation followed by MuJoCo closed-loop data aggregation",
+      "optimizer_updates": 7000
+    },
+    "workspace": {
+      "joint_pairs": 240000,
+      "uniform_joint_draw_pairs": 162517,
+      "demo_neighborhood_pairs": 77483,
+      "p95_max_per_axis_pair_change_deg": 4.1,
+      "minimum_endpoint_clearance_mm": 13
+    },
+    "holding_prior": {
+      "simulated_hold_poses": 4075
+    }
+  }
 }
